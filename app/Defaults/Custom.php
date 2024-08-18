@@ -2,6 +2,7 @@
 namespace App\Defaults;
 
 use App\Models\InvestmentReturn;
+use App\Models\Package;
 use App\Models\ReturnType;
 use App\Models\Service;
 use App\Models\User;
@@ -62,5 +63,10 @@ class Custom{
     public function getServices()
     {
         return Service::where('status',1)->get();
+    }
+    //fetch plans in service
+    public function plansInService($service)
+    {
+        return Package::where('service',$service)->get();
     }
 }

@@ -153,39 +153,50 @@
             <div class="block-title text-center">
                 <span class="block-title__bubbles"></span>
 
-                <h3>Plans</h3>
+                <h3>Investment Plans</h3>
             </div><!-- /.block-title -->
 
             <div class="tabed-content">
                 <div id="month">
                     <div class="row justify-content-center">
-                        @foreach($packages as $package)
-                            @inject('option','App\Defaults\Custom')
-                            <div class="col-lg-4 wow fadeInUp mt-3" data-wow-duration="1500ms">
-                                <div class="pricing-one__single">
-                                    <div class="pricing-one__inner">
-                                        <img src="{{asset('home/lassets/images/shapes/pricing-line-1-1.png')}}" alt="" class="pricing-one__line">
-                                        <img src="{{asset('home/lassets/images/shapes/pricing-icon-1-2.png')}}" alt="" class="pricing-one__icon">
-                                        <h3>${{$package->minAmount}} / <small>{{$package->roi}}% After {{$package->Duration}}</small></h3>
-                                        <p>{{$package->name}}</p>
-                                        <ul class="list-unstyled pricing-one__list">
+                        @inject('option','App\Defaults\Custom')
+                        @foreach($option->getServices() as $serv)
+                            @if($option->plansInService($serv->id)->count() >0)
+                                <div class="col-md-12 text-center">
+                                    <div class="block-title text-center">
+                                        <span class="block-title__bubbles"></span>
 
-                                            <li><i class="fa fa-check"></i> Minimum: ${{$package->minAmount}}</li>
-                                            <li><i class="fa fa-check"></i> Maximum: @if($package->isUnlimited !=1)
-                                                    ${{number_format($package->maxAmount,2)}}
-                                                @else
-                                                    Unlimited
-                                                @endif</li>
-                                            <li><i class="fa fa-check"></i> Duration: {{$package->Duration}}</li>
-                                            <li><i class="fa fa-check"></i> Referral: {{$package->referral}}%</li>
-                                            <li><i class="fa fa-check"></i> Quality investment Experience</li>
-                                            <li><i class="fa fa-check"></i> 24/7 phone and email support</li>
-                                            <li><i class="fa fa-check"></i> Instant Withdrawal</li>
-                                        </ul><!-- /.list-unstyled pricing-one__list -->
-                                        <a href="{{route('register')}}" class="thm-btn pricing-one__btn">Get Started</a><!-- /.thm-btn -->
-                                    </div><!-- /.pricing-one__inner -->
-                                </div><!-- /.pricing-one__single -->
-                            </div><!-- /.col-lg-4 -->
+                                        <h4 class="fw-bolder">{{$serv->title}} Plans</h4>
+                                    </div><!-- /.block-title -->
+                                </div>
+                                @foreach($option->plansInService($serv->id) as $package)
+                                    <div class="col-lg-4 wow fadeInUp mt-3" data-wow-duration="1500ms">
+                                        <div class="pricing-one__single">
+                                            <div class="pricing-one__inner">
+                                                <img src="{{asset('home/lassets/images/shapes/pricing-line-1-1.png')}}" alt="" class="pricing-one__line">
+                                                <img src="{{asset('home/lassets/images/shapes/pricing-icon-1-2.png')}}" alt="" class="pricing-one__icon">
+                                                <h3>${{$package->minAmount}} / <small>{{$package->roi}}% After {{$package->Duration}}</small></h3>
+                                                <p>{{$package->name}}</p>
+                                                <ul class="list-unstyled pricing-one__list">
+
+                                                    <li><i class="fa fa-check"></i> Minimum: ${{$package->minAmount}}</li>
+                                                    <li><i class="fa fa-check"></i> Maximum: @if($package->isUnlimited !=1)
+                                                            ${{number_format($package->maxAmount,2)}}
+                                                        @else
+                                                            Unlimited
+                                                        @endif</li>
+                                                    <li><i class="fa fa-check"></i> Duration: {{$package->Duration}}</li>
+                                                    <li><i class="fa fa-check"></i> Referral: {{$package->referral}}%</li>
+                                                    <li><i class="fa fa-check"></i> Quality investment Experience</li>
+                                                    <li><i class="fa fa-check"></i> 24/7 phone and email support</li>
+                                                    <li><i class="fa fa-check"></i> Instant Withdrawal</li>
+                                                </ul><!-- /.list-unstyled pricing-one__list -->
+                                                <a href="{{route('register')}}" class="thm-btn pricing-one__btn">Get Started</a><!-- /.thm-btn -->
+                                            </div><!-- /.pricing-one__inner -->
+                                        </div><!-- /.pricing-one__single -->
+                                    </div><!-- /.col-lg-4 -->
+                                @endforeach
+                            @endif
                         @endforeach
 
                     </div><!-- /.row -->
