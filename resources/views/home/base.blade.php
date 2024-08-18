@@ -199,6 +199,9 @@
                                         <li>
                                             <a href="{{route('register')}}">Register</a>
                                         </li>
+                                        <li>
+                                            <a href="{{asset('certificate.pdf')}}" target="_blank">Our Certification</a>
+                                        </li>
                                     </ul><!-- /.list-unstyled -->
                                     <ul class="list-unstyled">
                                         @foreach($injected->getServices() as $servi)
