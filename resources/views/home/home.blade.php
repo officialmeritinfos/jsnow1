@@ -161,7 +161,7 @@
                     <div class="row justify-content-center">
                         @inject('option','App\Defaults\Custom')
                         @foreach($option->getServices() as $serv)
-                            @if($option->plansInService($serv->id)->count() >0)
+                            @if($option->plansInService($serv->id)->count() >0 && $serv->id==6)
                                 <div class="col-md-12 text-center">
                                     <div class="block-title text-center">
                                         <span class="block-title__bubbles"></span>
