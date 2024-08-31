@@ -175,21 +175,26 @@
                                             <div class="pricing-one__inner">
                                                 <img src="{{asset('home/lassets/images/shapes/pricing-line-1-1.png')}}" alt="" class="pricing-one__line">
                                                 <img src="{{asset('home/lassets/images/shapes/pricing-icon-1-2.png')}}" alt="" class="pricing-one__icon">
-                                                <h3>${{$package->minAmount}} / <small>{{$package->roi}}% After {{$package->Duration}}</small></h3>
+{{--                                                <h3>${{$package->minAmount}} / <small>{{$package->roi}}% Daily</small></h3>--}}
                                                 <p>{{$package->name}}</p>
                                                 <ul class="list-unstyled pricing-one__list">
 
-                                                    <li><i class="fa fa-check"></i> Minimum: ${{$package->minAmount}}</li>
+                                                    <li><i class="fa fa-check"></i> Minimum: £{{$package->minAmount}}</li>
                                                     <li><i class="fa fa-check"></i> Maximum: @if($package->isUnlimited !=1)
-                                                            ${{number_format($package->maxAmount,2)}}
+                                                            £{{number_format($package->maxAmount,2)}}
                                                         @else
                                                             Unlimited
                                                         @endif</li>
+                                                    <li><i class="fa fa-check"></i> Daily Profits Return: {{$package->roi}}</li>
                                                     <li><i class="fa fa-check"></i> Duration: {{$package->Duration}}</li>
                                                     <li><i class="fa fa-check"></i> Referral: {{$package->referral}}%</li>
                                                     <li><i class="fa fa-check"></i> Quality investment Experience</li>
                                                     <li><i class="fa fa-check"></i> 24/7 phone and email support</li>
-                                                    <li><i class="fa fa-check"></i> Instant Withdrawal</li>
+                                                    <li><i class="fa fa-check"></i> Monthly Withdrawal: @if($package->monthlyWithdrawal)
+                                                                                                            Yes
+                                                        @else
+                                                        No
+                                                        @endif</li>
                                                 </ul><!-- /.list-unstyled pricing-one__list -->
                                                 <a href="{{route('register')}}" class="thm-btn pricing-one__btn">Get Started</a><!-- /.thm-btn -->
                                             </div><!-- /.pricing-one__inner -->
