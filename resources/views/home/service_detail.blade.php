@@ -58,7 +58,7 @@
                                                 @else
                                                     Unlimited
                                                 @endif</li>
-                                            <li><i class="fa fa-check"></i> Daily Profits Return: {{$package->roi}}</li>
+                                            <li><i class="fa fa-check"></i> Daily Profits Return: {{$package->roi}}%</li>
                                             <li><i class="fa fa-check"></i> Duration: {{$package->Duration}}</li>
                                             <li><i class="fa fa-check"></i> Referral: {{$package->referral}}%</li>
                                             <li><i class="fa fa-check"></i> Quality investment Experience</li>
